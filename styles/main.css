@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Archivo:600|Muli');
+
+/*******************************************************
+* Colors
+********************************************************/
+:root {
+  --background: #f7f3f0;
+  --black: #000;
+  --semi-black: #333;
+  --white: #fff;
+  --font-default: 'Muli', sans-serif;
+  --font-heading: 'Archivo', san-serif;
+  --font-upperHeading: 'Archivo Black', san-serif;
+}
+
+/*******************************************************
+* Global
+********************************************************/
+html {
+
+}
+
+body,
+html {
+  margin: 0;
+  font-family: var(--font-default);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: var(--semi-black);
+  background-color: var(--black);
+}
+
+body.menu-is-open {
+  /*
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  */
+  overflow: hidden;
+}
+
+.page-background {
+  background-color: var(--background);
+}
+
+/*******************************************************
+* UTILITIES
+********************************************************/
+.u-container {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/*******************************************************
+* HEADER
+********************************************************/
+header {
+  position: fixed;
+  color: #fff;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  /* background-color: transparent;
+  transition: background-color .65s ease-in-out; */
+}
+
+/* header.is-white {
+  background-color: var(--background);
+} */
+
+.header-inner {
+  display: flex;
+  padding: 1rem 0;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 468px) {
+  .header-inner {
+    padding: 2rem 0;
+  }
+}
+
+.menu-trigger {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 14px;
+  transition: color .25s ease-in;
+}
+
+/* STATE */
+.logo.is-black {
+  color: var(--semi-black);
+}
+
+/*******************************************************
+* BURGER
+********************************************************/
+.burger {
+  width: 30px;
+}
+
+.burger-bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  margin: 6px 0;
+  transition: background-color .25s ease-in;
+}
+
+.burger-bar--2 {
+  margin-left: 3px;
+}
+
+/* STATE */
+.burger.is-black .burger-bar {
+  background-color: var(--semi-black);
+}
+
+/*******************************************************
+* OFF CANVAS
+********************************************************/
+.off-canvas {
+  width: 80%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--white);
+  min-height: 100%;
+  z-index: 9;
+  transform: translateX(-105%);
+  transition: transform .65s cubic-bezier(.95, -0.11, .03, 1.06);
+  box-shadow: 10px 2px 10px rgba(0, 0, 0, .155);
+}
+
+@media screen and (min-width: 768px) {
+  .off-canvas {
+    /* overwrites */
+    max-width: 400px;
+  }
+}
+
+.off-canvas.is-visible {
+  transform: translateX(0);
+}
+
+.page-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .4s .3s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.menu-is-open .page-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+}
+
+/*******************************************************
+* Secion #1 - Intro
+********************************************************/
+.intro-section {
+  background-color: var(--black);
+  height: 100vh;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.intro-section__image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* opacity: .7; */
+
+  transform: translate(38%, 5%);
+
+  max-height: 65vh;
+  opacity: 0;
+}
+
+.intro-section__image.initial-animation-done {
+  opacity: 1;
+}
+
+.intro-section__image.is-visible {
+  /* opacity: 1; */
+}
+
+@media screen and (min-width: 375px) {
+  .intro-section__image {
+    /* overwrites */
+    max-height: 70vh;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .intro-section__image {
+    /* overwrites */
+    max-height: 75vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .intro-section__image {
+    /* overwrites */
+    transform: translate(0);
+    max-height: 80vh;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .intro-section__image {
+    /* overwrites */
+    max-height: 85vh;
+  }
+}
+
+
+.shadow {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 8vh;
+}
+
+@media screen and (min-width: 1024px) {
+  .shadow {
+    height: 14vh;
+  }
+}
+
+.intro-content {
+  color: var(--white);
+  font-family: var(--font-upperHeading);
+  font-size: 1.5rem;
+  line-height: .8;
+  text-transform: uppercase;
+  z-index: 1;
+
+  display: flex;
+  flex-grow: 1;
+  margin-top: 125px;
+  padding-left: 2rem;
+}
+
+@media screen and (min-width: 321px) {
+  .intro-content {
+    margin-top: 150px;
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+
+  .intro-content {
+    /* overwrites */
+    font-size: 2rem;
+    margin-top: 0;
+    padding-left: 8vw;
+
+
+    /* additional */
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .intro-content {
+    /* overwrites */
+    font-size: 2.5rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .intro-content {
+    /* overwrites */
+    font-size: 3rem;
+  }
+}
+
+.intro-job,
+.intro-passion {
+  color: rgba(255, 255, 255, 0.225);
+}
+
+.intro-headline,
+.intro-job,
+.intro-passion {
+  overflow: hidden;
+}
+
+.intro-animation-row {
+  display: block;
+  transform: translateY(110%);
+  transition: transform .85s ease-out;
+}
+
+.is-visible .intro-animation-row {
+  transform: translateY(0);
+}
+
+/*******************************************************
+* Secion #2 - Skills
+********************************************************/
+.skill-section {
+  padding-top: 100px;
+  /* background-color: yellow; */
+
+  background-color: var(--background);
+}
